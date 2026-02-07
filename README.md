@@ -17,8 +17,8 @@ Your Anki deck must contain fields named:
 
 You can choose to generate text-to-speech audio from either:
 
-- **`Sentence`**
-- **`Word`**
+- **`Sentences`**
+- **`Words`**
 
 ### **Important:**
 You must specify the location of your Anki's `collection.media` folder (audio files must be uploaded to this folder to function). This can be accessed via:
