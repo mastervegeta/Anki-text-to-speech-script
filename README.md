@@ -14,7 +14,6 @@ Your Anki deck must contain fields named:
 - **`Sentence`**
 - **`Audio`**
 
-- if you don't have these you can rename create them or rename
 
 You can choose to generate text-to-speech audio from either:
 
