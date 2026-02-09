@@ -11,7 +11,7 @@ languages = ["Japanese", "Mandarin", "Korean", "Spanish", "French", "Swedish", "
 chosen_language = "Japanese" #this is chosen in UI
 chosen_sentence_or_word = "Sentence" #this is chosen in UI
 chosen_anki_collection_dir = '/Users/veikkakortelainen/Library/Application Support/Anki2/toinenprof/collection.media'   # Directory to save the MP3 files This is chosen in UI
-
+chosen_to_overwrite = "No" #this is chosen in UI
 
 lang_var = ""
 if chosen_language == "Japanese":
@@ -146,22 +146,35 @@ for id in note_ids:
     response_id_use = requests.post('http://localhost:8765', json=notes_info)
     #print(response_id_use.json())
     data = response_id_use.json()
+    #print(data)
+
 
     # Accessing the Sentence value
     sentence_value = data['result'][0]['fields']['Sentence']['value']
+    AUDIO_value = data['result'][0]['fields']['Audio']['value']
     #print(sentence_value)
+    #print(AUDIO_value)
 
     #Accessing the Word value
     word_value = data['result'][0]['fields']['Word']['value']
     print(word_value)
 
-    #logic for choosing whether to make the text-to-speech of the sentence vs. word
-    if chosen_sentence_or_word == "Sentence":
-        text_to_speech_from_sentence_or_word(sentence_value, word_value, chosen_anki_collection_dir)
-    elif chosen_sentence_or_word == "Word":
-        text_to_speech_from_sentence_or_word(word_value, word_value, chosen_anki_collection_dir)
+    #
+    if AUDIO_value == "" or chosen_to_overwrite == "Yes":
+
+        #logic for choosing whether to make the text-to-speech of the sentence vs. word
+        if chosen_sentence_or_word == "Sentence":
+            text_to_speech_from_sentence_or_word(sentence_value, word_value, chosen_anki_collection_dir)
+            print(f"Made sentence audio for {word_value}")
+
+        elif chosen_sentence_or_word == "Word":
+            text_to_speech_from_sentence_or_word(word_value, word_value, chosen_anki_collection_dir)
+            print(f"Made word audio for {word_value}")
+        else:
+            print("You didn't choose a Sentence, vs. a Word")
+
+        update_anki_cards(word_value, chosen_anki_collection_dir)
+
+    #if the audio already exists dont make another
     else:
-        print("You didn't choose a Sentence, vs. a Word")
-
-
-    update_anki_cards(word_value, chosen_anki_collection_dir)
+        continue
