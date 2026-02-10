@@ -1,6 +1,6 @@
 # 📚 Text-to-Speech Script Documentation
 
-**Current Version:** version 2  
+**Current Version:** version 3  
 **Note:** This script **_REQUIRES_** [AnkiConnect](https://ankiweb.net/shared/info/2055492159) to function.
 
 ---
@@ -40,7 +40,9 @@ You must specify the DECK you're using the program for.
 4. ~~**Remove the `my.audio.dir`**, and only import the audio files to `anki.collection`.~~
 5. ~~**Take as input only the deck name** and the location of `anki.collection`.~~
 6. ~~**Add a choice of audio**: Word vs. Sentence.~~
-7. **Create a user interface** to use the script without needing to change the source code.
+7. **C̶r̶e̶a̶t̶e̶ ̶a̶ ̶u̶s̶e̶r̶ ̶i̶n̶t̶e̶r̶f̶a̶c̶e̶** ̶t̶o̶ ̶u̶s̶e̶ ̶t̶h̶e̶ ̶s̶c̶r̶i̶p̶t̶ ̶w̶i̶t̶h̶o̶u̶t̶ ̶n̶e̶e̶d̶i̶n̶g̶ ̶t̶o̶ ̶c̶h̶a̶n̶g̶e̶ ̶t̶h̶e̶ ̶s̶o̶u̶r̶c̶e̶ ̶c̶o̶d̶e̶.̶
+8. Finish with **error management**
+9. Make the script a **Anki Add-on**
 
 ---
 
